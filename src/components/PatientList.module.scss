@@ -1,0 +1,154 @@
+.patientListContainer {
+  padding: 0.7rem;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+
+  @media (max-width: 768px) {
+    align-items: center; 
+    margin-left: 0; 
+  }
+}
+
+.centerHeading {
+  height: 1rem;
+  color: black;
+  width: 100%;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  justify-content: center; 
+  margin-bottom: 1rem; 
+
+  @media (max-width: 768px) {
+    width: 50%;
+    height: 1rem;
+    padding-bottom: 0rem;
+    padding-right: 20rem;
+    font-weight: 700;
+  }
+}
+
+.patientDataContainer {
+  width: 50%;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+
+  @media (max-width: 768px) {
+    width: 26rem;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    padding-right: 1rem;
+  }
+}
+
+.patientCard {
+  margin: 0.6rem;
+  padding: 0.6rem;
+  width: 30rem; 
+  height: 4rem; 
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 30rem; 
+  position: relative; 
+  border-radius: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%; 
+    height: 0.6rem; 
+    border: 2px solid #1d14145b; 
+    justify-content: center;
+  }
+}
+
+.patientInfo {
+  width: 15rem; 
+  display: flex;
+  align-items: center; 
+
+  @media (max-width: 768px) {
+    width: 1rem; 
+    align-items: flex-start; 
+    padding-right: 1rem;
+  }
+}
+
+.patientPhoto {
+  width: 5rem;
+  height: 4rem; 
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; 
+  font-weight: bold;
+  color: #fff;
+  background-color: #6f6c6cc7;
+  overflow: hidden;
+  text-shadow: 1px 1px 2px #b2a9a922;
+  color: #ffffff; 
+}
+
+.patientContent {
+  padding-left: 0.5rem;
+  padding-top: 0rem;
+  flex: 1; 
+  display: flex;
+  align-items: center; 
+  flex-direction: column;
+  align-items: center; 
+
+  @media (max-width: 768px) {
+    padding-left: 1rem; 
+    padding-top: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column; 
+    text-align: left;
+  }
+}
+
+.patientName {
+  font-size: 1rem; 
+  margin: 0; 
+  white-space: nowrap; 
+  color: #000; 
+  text-align: center; 
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem; 
+    text-align: center; 
+    margin-bottom: 0.5rem; 
+  }
+}
+
+.patientId {
+  font-size: 0.9rem; 
+  margin: 0; 
+  color: #000; 
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem; 
+    text-align: center; 
+  }
+}
+
+.showDetailsButton {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 0.8rem; 
+  color: blue;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdownIcon {
+  margin-left: 5px; 
+}
