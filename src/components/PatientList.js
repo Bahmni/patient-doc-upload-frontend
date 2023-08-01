@@ -17,7 +17,7 @@ const PatientList = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "/openmrs/ws/rest/v1/bahmnicore/sql?location_uuid=833d0c66-e29a-4d31-ac13-ca9050d1bfa9&q=emrapi.sqlSearch.activePatients",
+        "/openmrs/ws/rest/v1/bahmnicore/sql?location_uuid={location_uuid}=emrapi.sqlSearch.activePatients",
         {
           headers: {
             "Content-Type": "application/json",
