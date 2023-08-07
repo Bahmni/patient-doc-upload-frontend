@@ -14,7 +14,7 @@
       white-space: normal;
     }
   }
-  @media (min-width: 800px) {
+  @media (min-width: 768px) {
     justify-content: flex-start;
     width: 100%;
     .bx--text-input__field {
@@ -22,7 +22,7 @@
       overflow: visible;
       text-overflow: initial;
       font-size: 14px;
-      width: auto;
+      width: 100%;
     }
   }
 }
