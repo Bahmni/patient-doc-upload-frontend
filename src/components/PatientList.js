@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PatientCard from './PatientCard';
 import styles from './PatientList.module.scss';
+import config from '../config'; 
+
 const PatientList = () => {
   const [patients, setPatients] = useState([]);
   const [activePatientCount, setActivePatientCount] = useState(0);
   const [isMobileView, setIsMobileView] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
-    fetchData();
+    fetchData(config.locationUUID);
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 768);
     };
@@ -18,10 +21,11 @@ const PatientList = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  const fetchData = async () => {
+
+  const fetchData = async (locationUUID) => {
     try {
       const response = await fetch(
-        '/openmrs/ws/rest/v1/bahmnicore/sql?location_uuid={location_uuid}&q=emrapi.sqlSearch.activePatients',
+        `/openmrs/ws/rest/v1/bahmnicore/sql?location_uuid=${locationUUID}&q=emrapi.sqlSearch.activePatients`,
         {
           headers: {
             Accept: 'application/json',
@@ -40,6 +44,7 @@ const PatientList = () => {
       console.error('Error fetching patient data:', error);
     }
   };
+
   return (
     <div className={styles.patientListContainer}>
       <div className={styles.centerHeading}>
@@ -59,4 +64,5 @@ const PatientList = () => {
     </div>
   );
 };
+
 export default PatientList;
