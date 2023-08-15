@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PatientCard from './PatientCard';
 import styles from './PatientList.module.scss';
-import config from '../config'; 
 
 const PatientList = () => {
+  const [locationUUID, setLocationUUID] = useState(null);
   const [patients, setPatients] = useState([]);
   const [activePatientCount, setActivePatientCount] = useState(0);
   const [isMobileView, setIsMobileView] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchData(config.locationUUID);
+    fetchLocationUUID();
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 768);
     };
@@ -21,6 +21,26 @@ const PatientList = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const fetchLocationUUID = async () => {
+    try {
+      const response = await fetch('/openmrs/ws/rest/v1/location?operator=ALL&s=byTags&tags=Login+Location&v=default', {
+        headers: {
+          Accept: 'application/xml', 
+        },
+      });
+
+      const xmlData = await response.text(); 
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlData, 'application/xml');
+
+      const sessionLocationUUID = xmlDoc.querySelector('uuid').textContent; 
+      setLocationUUID(sessionLocationUUID);
+      fetchData(sessionLocationUUID);
+    } catch (error) {
+      console.error('Error fetching session location data:', error);
+    }
+  };
 
   const fetchData = async (locationUUID) => {
     try {
@@ -53,7 +73,14 @@ const PatientList = () => {
       <div className={styles.patientDataContainer}>
         {patients.length > 0 ? (
           patients.map((patient) => (
-            <div key={patient.uuid} onClick={() => navigate(`/patient_dashboard/${patient.uuid}`, { state: { patientData: patient } })}>
+            <div
+              key={patient.uuid}
+              onClick={() =>
+                navigate(`/patient_dashboard/${patient.uuid}`, {
+                  state: { patientData: patient },
+                })
+              }
+            >
               <PatientCard patient={patient} isMobileView={isMobileView} />
             </div>
           ))
