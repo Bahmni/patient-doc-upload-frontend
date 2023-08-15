@@ -6,6 +6,16 @@ import PatientList from './PatientList';
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
+    text: () =>
+      Promise.resolve(`
+        <object>
+          <results>
+            <location>
+              <uuid>location-uuid</uuid>
+            </location>
+          </results>
+        </object>
+      `),
     json: () =>
       Promise.resolve([
         {
@@ -27,8 +37,9 @@ describe('PatientList component', () => {
     );
 
     await act(async () => {
-      await screen.findByText(/Patient Name/); 
+      await screen.findByText(/Patient Name/);
     });
+
 
   });
 });
