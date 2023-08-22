@@ -1,0 +1,70 @@
+.dashboard-container {
+  width: 50rem;
+  padding-top: 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.patient-search-container {
+  display: flex;
+  justify-content: space-between; 
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.patient-card-container {
+  display: flex;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.167); 
+  color: #fff; 
+  margin-bottom: 1rem; 
+  flex: 1; 
+}
+
+.patient-card-container .patient-photo {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: #3e3e3e; 
+  margin-right: 12px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0088cc; 
+}
+
+.patient-card-container .patient-info {
+  flex: 1; 
+}
+
+.patient-card-container .patient-details {
+  display: flex;
+  flex-direction: column; 
+}
+
+.patient-card-container .patient-details h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+  margin-bottom: 0.5rem; 
+}
+
+.patient-card-container .patient-details .patient-id {
+  font-size: 14px;
+  color: #000000;
+}
+
+.patient-card-container {
+  width: 15rem; 
+  padding: 1rem;
+}
+
+.search-box-container {
+  width: 18rem; 
+  padding-left: 9rem; 
+  padding-top: 1rem;
+}

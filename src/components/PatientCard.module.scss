@@ -1,0 +1,128 @@
+.patientCard {
+    margin: 0.6rem;
+    padding-left: 20rem;
+    padding-right: 20rem;
+    width: 36rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 30rem;
+    position: relative;
+    border-radius: 1rem;
+  
+    @media (max-width: 768px) {
+      width: 100%;
+      border-radius: 0px;
+      height: 5rem;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding-bottom: 5px;
+    }
+  }
+  
+  .patientInfo {
+    width: 15rem;
+    display: flex;
+    align-items: center;
+  
+    @media (max-width: 768px) {
+      width: 14rem;
+      padding-right: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  
+  .patientPhoto {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #494dc7ec;
+    background-color: rgba(156, 150, 150, 0.61);
+    overflow: hidden;
+    text-shadow: 1px 1px 2px #241e1ec6;
+  
+    @media (max-width: 768px) {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 0;
+      background-color: lightgrey;
+    }
+  }
+  
+  .patientContent {
+    padding-left: 0.5rem;
+    padding-top: 0rem;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+  
+    @media (max-width: 768px) {
+      padding-left: 0.5rem;
+      padding-top: 0;
+      text-align: center;
+    }
+  }
+  
+  .patientName {
+    font-size: 1rem;
+    margin: 0;
+    white-space: nowrap;
+    color: #000;
+    text-align: center;
+  
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .patient_id {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #000;
+    text-align: center;
+  
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+  
+  .showDetailsButton {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.8rem;
+    color: blue;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  
+    @media (max-width: 768px) {
+      font-size: 0.8rem;
+    }
+  }
+  
+  .dropdownIcon {
+    margin-left: 5px;
+  }
+  
+  .bottomBorder {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid black;
+  }
+  

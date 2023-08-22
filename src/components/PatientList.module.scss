@@ -1,0 +1,48 @@
+.patientListContainer {
+  padding: 2rem;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
+}
+
+.centerHeading {
+  height: 1rem;
+  color: black;
+  width: 100%;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding-right: 35rem;
+
+  @media (max-width: 768px) {
+    width: 50%;
+    height: 1rem;
+    padding-bottom: 0rem;
+    padding-right: 22rem;
+    font-weight: 700;
+  }
+}
+
+.patientDataContainer {
+  width: 40%;
+  padding-right: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 26rem;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    padding-right: 5.5rem;
+  }
+}

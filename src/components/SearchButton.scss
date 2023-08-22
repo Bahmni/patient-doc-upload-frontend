@@ -1,0 +1,28 @@
+.search-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  .bx--text-input__field {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    @media (max-width: 800px) {
+      width: 20rem;
+      white-space: normal;
+    }
+  }
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    width: 100%;
+    .bx--text-input__field {
+      white-space: normal;
+      overflow: visible;
+      text-overflow: initial;
+      font-size: 14px;
+      width: 100%;
+    }
+  }
+}

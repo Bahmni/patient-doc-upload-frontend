@@ -1,0 +1,33 @@
+.app-container {
+  padding: 45px;
+  width: 100%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tabs-container {
+  flex-basis: 34%;
+  display: flex;
+  margin-top: 20px;
+  padding-left: 1rem;
+  @media (max-width: 768px) {
+    flex-basis: 50%;
+    justify-content: center;
+    padding-right: 3rem;
+    padding-left: 1rem;
+  }
+}
+.search-container {
+  flex-basis: 25%;
+  display: flex;
+  @media (max-width: 768px) {
+    flex-basis: 80%;
+    margin-top: 1rem;
+    padding-left: 0rem;
+    padding-right: 2.6rem;
+  }
+}
