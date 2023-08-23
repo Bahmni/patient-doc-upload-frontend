@@ -6,7 +6,6 @@ import TabsComponent from './components/TabsComponent';
 import PatientList from './components/PatientList';
 import PatientDashboard from './Patient_Dashboard/PatientDashboard';
 import SearchButton from './components/SearchButton';
-
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +21,6 @@ function App() {
     </BrowserRouter>
   );
 }
-
 const HomeLayout = () => {
   return (
     <>
@@ -38,7 +36,6 @@ const HomeLayout = () => {
     </>
   );
 };
-
 const PatientDashboardLayout = () => {
   return (
     <div>
@@ -48,5 +45,4 @@ const PatientDashboardLayout = () => {
     </div>
   );
 };
-
 export default App;
