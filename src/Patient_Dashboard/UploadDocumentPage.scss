@@ -1,0 +1,137 @@
+.upload-doc-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-right: 5rem; 
+  }
+  
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .visit-info {
+    padding-right: 27rem;
+    font-weight: 600;
+  }
+  
+  .patient-name {
+    color: #333;
+    font-size: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  .divider {
+    border: 1px solid rgb(225, 219, 219);
+    width: 200%;
+    margin-top: 1rem;
+  }
+  
+  .content-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    padding-left: 1rem; 
+  }
+  
+  .doc-preview {
+    border: 2px solid #333;
+  }
+  
+  .right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 1rem;
+  }
+  
+  .icons-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    padding-left: 62rem; 
+  }
+  
+  .icon-wrapper {
+    border: 1px solid blue;
+    padding: 0.6rem;
+    margin-right: 1rem;
+  }
+  
+  .upload-icon,
+  .capture-icon {
+    color: blue;
+    cursor: pointer;
+  }
+  
+  .text-area-section {
+    padding-top: 8rem;
+    padding-right: 34rem;
+    margin-bottom: 1rem;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-top: 5rem;
+    padding-right: 11rem;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 1rem;
+  }
+   
+  .cancel-button {
+    width: 15%;
+    background-color: black; 
+    color: white; 
+  }
+  
+  .save-upload-button {
+    width: 18%;
+    background-color: rgb(12, 14, 12); 
+  }
+  
+  .file-type-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding-left: 1rem;
+  }
+  
+  .file-type-heading {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .important {
+    color: rgb(22, 21, 21);
+  }
+  
+  .radio-buttons-section {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    margin-top: 0.5rem;
+    width: 10rem;
+  }
+  
+  .radio-button {
+    flex: 1; 
+  }

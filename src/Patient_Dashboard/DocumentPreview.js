@@ -1,9 +1,9 @@
 import React from 'react';
 
-const DocumentPreview = ({ previewUrl }) => {
+const DocumentPreview = ({ previewUrl, width, height }) => {
   return (
     <div className="document-preview">
-      <img src={previewUrl} alt="Document Preview" />
+      <img src={previewUrl} alt="Preview" width={width} height={height} />
     </div>
   );
 };

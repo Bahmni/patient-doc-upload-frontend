@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import DashboardLayout from '../Patient_Dashboard/DashboardLayout';
 import { Search } from 'carbon-components-react';
 import { isValid, format } from 'date-fns';
@@ -7,13 +7,16 @@ import { Document24, Camera24 } from '@carbon/icons-react';
 import '../Patient_Dashboard/PatientDashboard.scss';
 const PatientDashboard = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // Add useNavigate hook
   const location = useLocation();
   const patientData = location.state ? location.state.patientData : null;
   const [visits, setVisits] = useState([]);
   const [selectedDocumentPreviews, setSelectedDocumentPreviews] = useState({});
+
   useEffect(() => {
     fetchVisits();
   }, []);
+
   const fetchVisits = async () => {
     try {
       const visitResponse = await fetch(`/openmrs/ws/rest/v1/visit?patient=${id}`);
@@ -42,8 +45,19 @@ const PatientDashboard = () => {
         ...prevPreviews,
         [visitId]: prevPreviews[visitId] ? [...prevPreviews[visitId], previewUrl] : [previewUrl],
       }));
+  
+      // Pass the visit object to the UploadDocumentPage
+      const selectedVisit = visits.find((visit) => visit.uuid === visitId);
+      navigate(`/upload/${visitId}`, {
+        state: {
+          patientData,
+          visit: selectedVisit, // Pass the visit object here
+          selectedDocumentPreview: previewUrl,
+        },
+      });
     }
   };
+
   const getInitials = (name) => {
     if (typeof name === 'string') {
       const initials = name
@@ -70,8 +84,8 @@ const PatientDashboard = () => {
             </div>
             <div className="patient-info">
               <div className="patient-details">
-                <h2 data-testid="patient-name">{patientData && patientData.name}</h2>
-                <div className="patient-id" data-testid="patient-identifier">
+                <h2>{patientData && patientData.name}</h2>
+                <div className="patient-id">
                   {patientData && `ID: ${patientData.identifier}`}
                 </div>
               </div>
@@ -91,7 +105,7 @@ const PatientDashboard = () => {
         </div>
         <div className="visits-container">
           {visits.map((visit) => (
-            <div key={visit.uuid} className="visit-item" data-testid={`document-icon-${visit.uuid}`}>
+            <div key={visit.uuid} className="visit-item">
               <div className="visit">
                 <span className="visit-description">Visit</span>
                 <span className="visit-date">
@@ -109,7 +123,6 @@ const PatientDashboard = () => {
                           fileInput.click();
                         }
                       }}
-                      data-testid={`document-icon-${visit.uuid}`} 
                     />
                     <input
                       id={`fileInput-${visit.uuid}`}
@@ -118,11 +131,10 @@ const PatientDashboard = () => {
                       onChange={(event) =>
                         handleDocumentUpload(event, visit.uuid)
                       }
-                      data-testid={`file-input-${visit.uuid}`}
                     />
                   </span>
                   <span className="icon-wrapper">
-                    <Camera24 className="capture-icon" onClick={handleCapture} data-testid="camera-icon"/>
+                    <Camera24 className="capture-icon" onClick={handleCapture} />
                   </span>
                 </div>
               </div>
@@ -151,4 +163,3 @@ const PatientDashboard = () => {
   );
 };
 export default PatientDashboard;
-

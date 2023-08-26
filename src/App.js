@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import TabsComponent from './components/TabsComponent';
 import PatientList from './components/PatientList';
 import PatientDashboard from './Patient_Dashboard/PatientDashboard';
+import UploadDocumentPage from './Patient_Dashboard/UploadDocumentPage';
 import SearchButton from './components/SearchButton';
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <Navbar />
         <div className="content">
           <Routes>
-            <Route path="/" element={<HomeLayout />} />
-            <Route path="/patient_dashboard/:id" element={<PatientDashboardLayout />} />
+          <Route path="/" element={<HomeLayout />} />
+            <Route path="/patient_dashboard/:id" element={<PatientDashboard />} />
+            <Route path="/upload/:visitId" element={<UploadDocumentPage />} />
           </Routes>
         </div>
       </div>
