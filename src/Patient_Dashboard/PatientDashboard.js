@@ -1,72 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import DashboardLayout from '../Patient_Dashboard/DashboardLayout';
-import { Search } from 'carbon-components-react';
-import { isValid, format } from 'date-fns';
-import { Document24, Camera24 } from '@carbon/icons-react';
-import '../Patient_Dashboard/PatientDashboard.scss';
+import React, { useState, useEffect } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import DashboardLayout from "../Patient_Dashboard/DashboardLayout";
+import { Search } from "carbon-components-react";
+import { Document24, Camera24 } from "@carbon/icons-react";
+import "../Patient_Dashboard/PatientDashboard.scss";
+
 const PatientDashboard = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // Add useNavigate hook
+  const navigate = useNavigate();
   const location = useLocation();
   const patientData = location.state ? location.state.patientData : null;
   const [visits, setVisits] = useState([]);
   const [selectedDocumentPreviews, setSelectedDocumentPreviews] = useState({});
+  const visitDate = location.state ? location.state.visitDate : null;
+  const [selectedDocument, setSelectedDocument] = useState(null);
 
   useEffect(() => {
     fetchVisits();
   }, []);
-
   const fetchVisits = async () => {
     try {
-      const visitResponse = await fetch(`/openmrs/ws/rest/v1/visit?patient=${id}`);
+      const visitResponse = await fetch(
+        `/openmrs/ws/rest/v1/visit?patient=${id}`
+      );
       const visitData = await visitResponse.json();
       setVisits(visitData.results);
     } catch (error) {
-      console.error('Error fetching visits:', error);
+      console.error("Error fetching visits:", error);
     }
   };
-  const getFormattedDate = (datetime) => {
-    if (isValid(new Date(datetime))) {
-      return format(new Date(datetime), 'MMM dd, yyyy hh:mm a');
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "short" });
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+  const handleCapture = async () => {
+    if (selectedDocument) {
+      const formData = new FormData();
+      formData.append('file', selectedDocument);
+      try {
+        const uploadResponse = await fetch(
+          '/openmrs/ws/rest/v1/bahmnicore/visitDocument/uploadDocument',
+          {
+            method: 'POST',
+            body: formData,
+          }
+        );
+        if (uploadResponse.ok) {
+          console.log('Document uploaded successfully');
+          setSelectedDocument(null); // Clear the selected document
+          fetchVisits(); // Refresh the visits after upload
+        } else {
+          console.error('Error uploading document');
+        }
+      } catch (error) {
+        console.error('Error uploading document:', error);
+      }
     } else {
-      return 'Invalid Date';
+      console.log('No document selected');
     }
   };
-  const handleCapture = () => {
-    // Capture logic here
-    console.log('Camera captured');
-  };
+  
   const handleDocumentUpload = (event, visitId) => {
     const file = event.target.files[0];
     if (file) {
+      setSelectedDocument(file); // Set the selected document
       const previewUrl = URL.createObjectURL(file);
       setSelectedDocumentPreviews((prevPreviews) => ({
         ...prevPreviews,
-        [visitId]: prevPreviews[visitId] ? [...prevPreviews[visitId], previewUrl] : [previewUrl],
+        [visitId]: prevPreviews[visitId]
+          ? [...prevPreviews[visitId], previewUrl]
+          : [previewUrl],
       }));
-  
       // Pass the visit object to the UploadDocumentPage
       const selectedVisit = visits.find((visit) => visit.uuid === visitId);
+      // const visitDate = formatDate(selectedVisit.display); // Extract visitDate
       navigate(`/upload/${visitId}`, {
         state: {
           patientData,
           visit: selectedVisit, // Pass the visit object here
           selectedDocumentPreview: previewUrl,
+          visitDate: visitDate, // Pass the visitDate here
         },
       });
     }
   };
-
   const getInitials = (name) => {
-    if (typeof name === 'string') {
+    if (typeof name === "string") {
       const initials = name
-        .split(' ')
+        .split(" ")
         .map((word) => word.charAt(0).toUpperCase())
-        .join('');
+        .join("");
       return initials;
     }
-    return '';
+    return "";
   };
   return (
     <DashboardLayout>
@@ -109,7 +138,8 @@ const PatientDashboard = () => {
               <div className="visit">
                 <span className="visit-description">Visit</span>
                 <span className="visit-date">
-                  {getFormattedDate(visit.startDatetime)}
+                  From : {formatDate(visit.display)} To :{" "}
+                  {formatDate(visit.display)}
                 </span>
                 <div className="visit-icons">
                   <span className="icon-wrapper">
@@ -127,31 +157,39 @@ const PatientDashboard = () => {
                     <input
                       id={`fileInput-${visit.uuid}`}
                       type="file"
-                      style={{ display: 'none' }}
+                      style={{ display: "none" }}
                       onChange={(event) =>
                         handleDocumentUpload(event, visit.uuid)
                       }
+                      accept="application/pdf,image/*" // Specify accepted file types
                     />
                   </span>
                   <span className="icon-wrapper">
-                    <Camera24 className="capture-icon" onClick={handleCapture} />
+                    <Camera24
+                      className="capture-icon"
+                      onClick={handleCapture}
+                    />
                   </span>
                 </div>
               </div>
               <div className="document-previews">
                 {selectedDocumentPreviews[visit.uuid] && (
                   <div className="document-preview-container">
-                    {selectedDocumentPreviews[visit.uuid].map((previewUrl, index) => (
-                      <div
-                        key={`document-preview-${visit.uuid}-${index}`}
-                        className="document-preview"
-                      >
-                        <img
-                          src={previewUrl}
-                          alt={`Document Preview ${index + 1} for Visit ${visit.uuid}`}
-                        />
-                      </div>
-                    ))}
+                    {selectedDocumentPreviews[visit.uuid].map(
+                      (previewUrl, index) => (
+                        <div
+                          key={`document-preview-${visit.uuid}-${index}`}
+                          className="document-preview"
+                        >
+                          <img
+                            src={previewUrl}
+                            alt={`Document Preview ${index + 1} for Visit ${
+                              visit.uuid
+                            }`}
+                          />
+                        </div>
+                      )
+                    )}
                   </div>
                 )}
               </div>
