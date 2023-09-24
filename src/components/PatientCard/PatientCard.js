@@ -3,7 +3,7 @@ import { Tile } from 'carbon-components-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import styles from './PatientCard.module.scss';
+import styles from '../PatientCard/PatientCard.module.scss';
 const PatientCard = ({ patient, isMobileView, to }) => {
   const getInitials = (name) => {
     if (typeof name === 'string') {

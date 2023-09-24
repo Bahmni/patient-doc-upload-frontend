@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PatientCard from './PatientCard';
+import PatientCard from '../PatientCard/PatientCard';
 import styles from './PatientList.module.scss';
 
 const PatientList = () => {
