@@ -1,4 +1,3 @@
-// DocumentPreview.test.js
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import DocumentPreview from './DocumentPreview';
@@ -10,7 +9,6 @@ test('renders DocumentPreview component', () => {
   
   render(<DocumentPreview previewUrl={previewUrl} width={width} height={height} />);
 
-  // Use screen to query the rendered elements
   const imageElement = screen.getByAltText('Preview');
 
   expect(imageElement).toBeInTheDocument();

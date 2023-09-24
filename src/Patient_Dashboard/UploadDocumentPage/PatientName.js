@@ -1,4 +1,3 @@
-// PatientName.js
 import React from "react";
 
 const PatientName = ({ patientName }) => {

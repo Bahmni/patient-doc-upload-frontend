@@ -15,11 +15,9 @@ test('renders ActionSection component', () => {
     />
   );
 
-  // Test clicking on the document upload icon
   fireEvent.click(container.querySelector('.upload-icon'));
   expect(handleDocumentUploadIcon).toHaveBeenCalled();
 
-  // Test clicking on the capture icon
   fireEvent.click(container.querySelector('.capture-icon'));
   expect(handleCapture).toHaveBeenCalled();
 });

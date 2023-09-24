@@ -13,11 +13,9 @@ test('renders NotesSection component', () => {
     />
   );
 
-  // Test clicking on the cancel button
   fireEvent.click(container.querySelector('.cancel-button'));
   expect(handleCancel).toHaveBeenCalled();
 
-  // Test clicking on the save and upload button
   fireEvent.click(container.querySelector('.save-upload-button'));
   expect(handleSaveAndUpload).toHaveBeenCalled();
 });

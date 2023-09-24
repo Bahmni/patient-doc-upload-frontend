@@ -1,4 +1,3 @@
-// Patient.test.js
 import Patient from './Patient';
 
 test('getName should return patient name', () => {
@@ -8,4 +7,3 @@ test('getName should return patient name', () => {
   expect(patient.getName()).toBe('John Doe');
 });
 
-// Add similar tests for other methods like getIdentifier and getPhotoUrl

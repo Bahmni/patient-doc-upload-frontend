@@ -9,7 +9,6 @@ test('renders FileTypeSection component', () => {
     <FileTypeSection selectedFileType={null} setSelectedFileType={setSelectedFileType} />
   );
 
-  // Test selecting a file type
   fireEvent.click(container.querySelector('input[type="radio"]'));
   expect(setSelectedFileType).toHaveBeenCalled();
 });

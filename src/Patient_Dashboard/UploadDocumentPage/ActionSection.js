@@ -1,4 +1,3 @@
-// ActionSection.js
 import React from "react";
 import { Document24, Camera24 } from "@carbon/icons-react";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom'; // Import BrowserRouter
+import { BrowserRouter as Router } from 'react-router-dom'; 
 import PatientCard from './PatientCard';
 
 const mockPatient = {

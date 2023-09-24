@@ -1,7 +1,5 @@
-// DocumentPreviewSection.js
 import React from "react";
-import DocumentPreview from "../DocumentPreview/DocumentPreview"; // Corrected import path
-
+import DocumentPreview from "../DocumentPreview/DocumentPreview"; 
 const DocumentPreviewSection = ({ documentPreviews }) => {
   return (
     <div className="left-content">

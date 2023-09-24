@@ -1,4 +1,3 @@
-// NotesSection.js
 import React from "react";
 import { Button, TextArea } from "carbon-components-react";
 

@@ -1,4 +1,3 @@
-// FileTypeSection.js
 import React from "react";
 import { RadioButtonGroup, RadioButton } from "carbon-components-react";
 

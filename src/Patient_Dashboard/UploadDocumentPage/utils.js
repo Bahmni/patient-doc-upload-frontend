@@ -1,7 +1,4 @@
-// utils.js
-import axios from "axios"; // Import the axios library
-
-// Function to save a file
+import axios from "axios";
 export async function saveFile(file, patientUuid, encounterTypeName, fileName) {
   const bahmniBaseUrl = "/openmrs";
   const format = file.type.split("/")[1];
