@@ -4,7 +4,7 @@ import { isValid, format} from "date-fns";
 
 const TitleContainer = ({ visitDate }) => {
   const formattedVisitDate = isValid(new Date(visitDate))
-    ? format(new Date(visitDate), "MMM dd, yyyy hh:mm a")
+    ? format(new Date(visitDate), "dd-MMM-yyyy ")
     : "Invalid Date";
 
   return (

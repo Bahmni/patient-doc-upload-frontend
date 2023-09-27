@@ -1,7 +1,6 @@
-import React from "react";
-import { formatDate } from "../PatientDashboard/PatientDashboard"; 
-import { Document24, Camera24 } from "@carbon/icons-react";
-
+import React from 'react';
+import { formatDate } from '../PatientDashboard/PatientDashboard';
+import { Document24, Camera24 } from '@carbon/icons-react';
 
 const VisitItem = ({
   visit,
@@ -28,36 +27,39 @@ const VisitItem = ({
                   fileInput.click();
                 }
               }}
+              data-testid={`document-icon-${visit.uuid}`} 
             />
             <input
               id={`fileInput-${visit.uuid}`}
               type="file"
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               onChange={(event) => handleDocumentUpload(event, visit.uuid)}
               accept="application/pdf,image/*"
             />
           </span>
           <span className="icon-wrapper">
-            <Camera24 className="capture-icon" onClick={handleCapture} />
+            <Camera24
+              className="capture-icon"
+              onClick={handleCapture}
+              data-testid="capture-icon"
+            />
           </span>
         </div>
       </div>
       <div className="document-previews">
         {selectedDocumentPreviews[visit.uuid] && (
           <div className="document-preview-container">
-            {selectedDocumentPreviews[visit.uuid].map(
-              (previewUrl, index) => (
-                <div
-                  key={`document-preview-${visit.uuid}-${index}`}
-                  className="document-preview"
-                >
-                  <img
-                    src={previewUrl}
-                    alt={`Document Preview ${index + 1} for Visit ${visit.uuid}`}
-                  />
-                </div>
-              )
-            )}
+            {selectedDocumentPreviews[visit.uuid].map((previewUrl, index) => (
+              <div
+                key={`document-preview-${visit.uuid}-${index}`}
+                className="document-preview"
+              >
+                <img
+                  src={previewUrl}
+                  alt={`Document Preview ${index + 1} for Visit ${visit.uuid}`}
+                />
+              </div>
+            ))}
           </div>
         )}
       </div>

@@ -5,7 +5,7 @@ const Visit = ({ visit }) => {
   return (
     <div className="visit">
       <span className="visit-description">Visit</span>
-      <VisitDate datetime={visit.startDatetime} />
+      {visit.startDatetime && <VisitDate datetime={visit.startDatetime} />}
     </div>
   );
 };
