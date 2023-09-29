@@ -8,18 +8,26 @@
 
 .header__item {
   list-style: none;
-  width: 5%;
   padding-top: 0.3rem;
-  a {
+    a {
     color: white !important;
+    display: block;
+    text-decoration: none;
   }
   a:hover {
     background-color: #1c4738e2 !important;
+    color: white !important;
   }
   @media (max-width: 768px) {
-   width: 4rem;
+    position: relative;
+    width: 4rem;
   }
 }
+
+.header__icon {
+  font-size: 24px;
+}
+
 .header__heading {
   color: white !important;
   font-size: 1.2em;
@@ -27,16 +35,12 @@
   flex-grow: 1;
   padding-right: 2.5rem;
   font-weight: 500;
+
   @media (max-width: 768px) {
-  width: 5rem;
-  padding-right: 9rem;
+    width: 5rem;
+    padding-right: 9rem;
   }
 }
-@media (max-width: 768px) {
-  .header__container {
-    flex-direction: row;
-  }
-  .header__item {
-    position: relative;
-  }
-}
+
+
+
