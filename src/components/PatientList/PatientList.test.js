@@ -1,10 +1,11 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import PatientList from './PatientList';
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
+    text: () => Promise.resolve('<uuid>your_location_uuid_here</uuid>'), 
     json: () =>
       Promise.resolve([
         {
@@ -27,14 +28,13 @@ describe('PatientList component', () => {
       </MemoryRouter>
     );
 
-    await waitFor(() => {
+    await waitFor(async () => {
       try {
-        expect(screen.getByText('Patient Name 1')).toBeInTheDocument();
-        expect(screen.getByText('Patient Name 2')).toBeInTheDocument();
+        await screen.findByText('Patient Name 1');
+        await screen.findByText('Patient Name 2');
       } catch (error) {
         console.error('Patient not found:', error);
       }
     });
   });
-
 });

@@ -3,17 +3,17 @@ import { render, fireEvent } from '@testing-library/react';
 import VisitItem from './VisitItem';
 
 jest.mock('../PatientDashboard/PatientDashboard', () => ({
-  formatDate: jest.fn((date) => date), 
+  formatDate: jest.fn((date) => date),
 }));
 
 describe('VisitItem Component', () => {
   it('renders the VisitItem component with visit details', () => {
     const visit = {
       display: '2023-09-28T10:00:00',
-      uuid: '12345', 
+      uuid: '12345',
     };
 
-    const selectedDocumentPreviews = {}; 
+    const selectedDocumentPreviews = {};
     const handleDocumentUpload = jest.fn();
     const handleCapture = jest.fn();
 
@@ -32,8 +32,8 @@ describe('VisitItem Component', () => {
     const visitDate = getByText(/From : .+ To : .+/);
     expect(visitDate).toBeInTheDocument();
 
-    const documentIcon = getByTestId('document-icon-12345'); 
-    const captureIcon = getByTestId('capture-icon'); 
+    const documentIcon = getByTestId('document-icon-12345');
+    const captureIcon = getByTestId('capture-icon');
     expect(documentIcon).toBeInTheDocument();
     expect(captureIcon).toBeInTheDocument();
   });
@@ -41,10 +41,10 @@ describe('VisitItem Component', () => {
   it('calls handleCapture when the Capture icon is clicked', () => {
     const visit = {
       display: '2023-09-28T10:00:00',
-      uuid: '12345', 
+      uuid: '12345',
     };
 
-    const selectedDocumentPreviews = {}; 
+    const selectedDocumentPreviews = {};
     const handleDocumentUpload = jest.fn();
     const handleCapture = jest.fn();
 
@@ -57,7 +57,7 @@ describe('VisitItem Component', () => {
       />
     );
 
-    const captureIcon = getByTestId('capture-icon'); 
+    const captureIcon = getByTestId('capture-icon');
     fireEvent.click(captureIcon);
 
     expect(handleCapture).toHaveBeenCalledTimes(1);
