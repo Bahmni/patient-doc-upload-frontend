@@ -41,7 +41,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@storybook/addon-styling": "^0.3.2",
     "@storybook/react": "6.5",
-    "axios": "^0.24.0",
+    "axios": "^1.6.0",
     "bahmni-carbon-ui": "0.0.8",
     "carbon-components": "^10.19.0",
     "carbon-components-react": "^7.25.0",
